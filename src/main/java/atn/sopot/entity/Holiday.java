@@ -1,10 +1,21 @@
 package atn.sopot.entity;
 
 import atn.sopot.enumStatus.Status;
-
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+@ToDO przegadanie
+ Czy zrobić to za pomocą adnotacji @NamedQueries ({
+@NamedQuery(name ="HoidaySearch", query ="SELECT * FROM"")
+
+W przypadku tabel relacyjnych
+@JoinTable(name = "hoidayData", joinColumns = {
+@JoinColumn(name "xyz", referencedColumnName= "id_xyz")}, inverseJoinColumns = {
+@JoinColumn(name = "id_x_user", referencedColumnName = "id_user")})
+@ManyToMany(fetch = FetchType.EAGER)
+}
+ **/
 
 @Entity
 @Table(name="per_holiday")
@@ -85,5 +96,18 @@ public class Holiday {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Holiday{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", status=" + status +
+                '}';
     }
 }
