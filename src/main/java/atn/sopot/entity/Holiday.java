@@ -25,24 +25,29 @@ public class Holiday {
     private Long id;
 
     @Column
-    private String name;
+    private String imie;
 
     @Column
-    private String surname;
+    private String nazwisko;
 
     @Column
-    private String email;
+    private String login;
 
     @Column(name = "START_DATE")
-    private Date startDate;
+    private Date nieobecnyod;
 
     @Column(name = "END_DATE")
-    private Date endDate;
-
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private Date nieobecnydo;
 
     public Holiday() {
+    }
+
+    public Holiday(String imie, String nazwisko, String login, Date nieobecnyod, Date nieobecnydo) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.login = login;
+        this.nieobecnyod = nieobecnyod;
+        this.nieobecnydo = nieobecnydo;
     }
 
     public Long getId() {
@@ -50,64 +55,55 @@ public class Holiday {
     }
 
 
-    public String getName() {
-        return name;
+    public String getImie() {
+        return imie;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setImie(String imie) {
+        this.imie = imie;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getNazwisko() {
+        return nazwisko;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getNieobecnyod() {
+        return nieobecnyod;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setNieobecnyod(Date nieobecnyod) {
+        this.nieobecnyod = nieobecnyod;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getNieobecnydo() {
+        return nieobecnydo;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setNieobecnydo(Date nieobecnydo) {
+        this.nieobecnydo = nieobecnydo;
     }
 
     @Override
     public String toString() {
         return "Holiday{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", status=" + status +
+                ", imie='" + imie + '\'' +
+                ", nazwisko='" + nazwisko + '\'' +
+                ", login='" + login + '\'' +
+                ", nieobecnyod=" + nieobecnyod +
+                ", nieobecnydo=" + nieobecnydo +
                 '}';
     }
 }
