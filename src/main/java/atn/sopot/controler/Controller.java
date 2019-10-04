@@ -1,38 +1,55 @@
 package atn.sopot.controler;
 
 import atn.sopot.entity.Holiday;
+
+
 import atn.sopot.repository.IHoliday;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.context.config.ResourceNotFoundException;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@CrossOrigin //dostęp do api przez browser.
+@CrossOrigin (origins = "http://localhost:4200", maxAge = 3600) //dostęp do api przez browser.
 @RestController
-@RequestMapping("/api/")
+//@RequestMapping("/api/")
 public class Controller {
 
-   // @Autowired //autowstrzykiwanie
-            IHoliday iHoliday;
+    @Autowired //autowstrzykiwanie
+           private IHoliday iHoliday;
 
     public Controller(IHoliday iHoliday) {
         this.iHoliday = iHoliday;
     }
 
-    @GetMapping("holTest")
-    public Holiday getHol () {
-        return (Holiday) iHoliday.findAll();
+    @GetMapping
+    @RequestMapping("/findall")
+    public List findAll(){
+        return iHoliday.findAll();
+    }
+    @RequestMapping("/findbynazwisko")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public String fetchDataByNazwisko(@RequestParam("nazwisko") String nazwisko){
+        String result ="";
+
+        for (Holiday holi: iHoliday.findByNazwisko(nazwisko)){
+            result += holi.toString() + "<br>";
+        }
+        return result;
     }
 
-            /* @GetMapping(value="holiday"){
-        public List<Holiday> getHoliday() {
-            return iHoliday.findAllByNazwiskoAndImie();*/
+    @GetMapping("holidaylogin/{login}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<Holiday> getHolidayByLogin(@PathVariable(value = "login") String holidayLogin)
+        throws ResourceNotFoundException {
+        Holiday holiday = iHoliday.findByLogin(holidayLogin);
+        return ResponseEntity.ok().body(holiday);
+}
+
 
     @GetMapping(value = "holidays")
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Holiday> getHoliday(){
         return iHoliday.findAllByNazwiskoAndImie("","");
     }
@@ -40,6 +57,7 @@ public class Controller {
 
 
     @GetMapping(value = "/search")
+    @CrossOrigin(origins = "http://localhost:4200")
     public boolean isHolidayActive() {
         return false;
         // return iHoliday.isHeOnHoliday;
@@ -48,12 +66,8 @@ public class Controller {
         model.addAttribute("list",iHoliday.FindThroughTheDataInput());
         return "holidayList";*/
 
-    /*@RequestMapping(value = "holiday")
-    public String view(Model model) {
-        model.addAttribute("lista", iHoliday.findByLoginOrNazwiskoAndImie("test","Maciej","Przekwas"));
 
-        return "holidayList";
-    }*/
+
 }
 
     /**
