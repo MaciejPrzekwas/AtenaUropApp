@@ -16,6 +16,10 @@ import java.util.List;
 //@RequestMapping("/api/")
 public class Controller {
 
+    /*
+    Weryfikacja metod
+     */
+
     @Autowired //autowstrzykiwanie
            private IHoliday iHoliday;
 
@@ -28,12 +32,24 @@ public class Controller {
     public List findAll(){
         return iHoliday.findAll();
     }
+
     @RequestMapping("/findbynazwisko")
     @CrossOrigin(origins = "http://localhost:4200")
     public String fetchDataByNazwisko(@RequestParam("nazwisko") String nazwisko){
         String result ="";
 
         for (Holiday holi: iHoliday.findByNazwisko(nazwisko)){
+            result += holi.toString() + "<br>";
+        }
+        return result;
+    }
+
+    @RequestMapping("/findbyemail")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public String fetchDataByEmail(@RequestParam("email") String email){
+        String result ="";
+
+        for (Holiday holi: iHoliday.findByEmail(email)){
             result += holi.toString() + "<br>";
         }
         return result;

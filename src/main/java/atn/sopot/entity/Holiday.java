@@ -17,6 +17,8 @@ W przypadku tabel relacyjnych
 }
  **/
 
+//TODO -Maciej Weryfikacja kolumny email (dopisana )
+
 @Entity
 @Table(name="per_holiday")
 public class Holiday {
@@ -39,21 +41,32 @@ public class Holiday {
     @Column(name = "END_DATE")
     private Date nieobecnydo;
 
+    @Column(name = "email")
+    private String email;
+
     public Holiday() {
     }
 
-    public Holiday(String imie, String nazwisko, String login, Date nieobecnyod, Date nieobecnydo) {
+    public Holiday(String imie, String nazwisko, String login, Date nieobecnyod, Date nieobecnydo, String  email) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.login = login;
         this.nieobecnyod = nieobecnyod;
         this.nieobecnydo = nieobecnydo;
+        this.email = email;
     }
 
     public Long getId() {
         return id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getImie() {
         return imie;
@@ -104,6 +117,7 @@ public class Holiday {
                 ", login='" + login + '\'' +
                 ", nieobecnyod=" + nieobecnyod +
                 ", nieobecnydo=" + nieobecnydo +
+                ", email=" + email +
                 '}';
     }
 }

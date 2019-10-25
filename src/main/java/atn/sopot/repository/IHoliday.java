@@ -16,6 +16,8 @@ public interface IHoliday extends JpaRepository<Holiday, Long> {
 
     List<Holiday> findByNazwisko(String Nazwisko);
 
+    List<Holiday> findByEmail(String Email);
+
  public List<Holiday> findByLoginOrNazwiskoAndImie(String login, String imie, String nazwisko);
 
  public List<Holiday> findAllByNazwiskoAndImie(String nazwisko, String imie);
