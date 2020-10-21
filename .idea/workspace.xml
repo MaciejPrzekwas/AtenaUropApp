@@ -91,7 +91,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565804737331" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/git-cmd.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../test" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -143,6 +143,8 @@
       <workItem from="1569195906216" duration="935000" />
       <workItem from="1569966428352" duration="8354000" />
       <workItem from="1571612852907" duration="4081000" />
+      <workItem from="1572542746078" duration="1365000" />
+      <workItem from="1576113064293" duration="375000" />
     </task>
     <servers />
   </component>
